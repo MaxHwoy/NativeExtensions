@@ -15,8 +15,8 @@ namespace NativeExtensions
 		virtual bool CanWrite() = 0;
 		virtual std::int64_t Position() = 0;
 		virtual std::int64_t Length() = 0;
-		virtual void Position(std::int64_t) = 0;
-		virtual void Length(std::int64_t) = 0;
+		virtual void Position(std::int64_t position) = 0;
+		virtual void Length(std::int64_t length) = 0;
 
 		void CopyTo(Stream* destination);
 		void CopyTo(Stream* destination, std::int32_t buffer_size);
