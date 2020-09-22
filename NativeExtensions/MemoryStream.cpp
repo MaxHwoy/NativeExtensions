@@ -107,7 +107,7 @@ namespace NativeExtensions
 
 	bool MemoryStream::CanWrite()
 	{
-		return this->is_open_;
+		return this->writable_;
 	}
 
 	std::int32_t MemoryStream::Capacity()
@@ -231,5 +231,108 @@ namespace NativeExtensions
 		return this->position_;
 	}
 
+	std::int32_t MemoryStream::Read(std::uint8_t* buffer, std::int32_t offset, std::int32_t count)
+	{
+		if (!this->is_open_) throw; // throw stream closed
+		if (buffer == nullptr) throw; // throw argument null
+		if (offset < 0) throw; // throw out of range
+		if (count < 0) throw; // throw out of range
 
+		int num = this->length_ - this->position_;
+
+		if (num > count) num = count;
+		if (num <= 0) return 0;
+		if (num <= 8)
+		{
+
+			for (std::int32_t i = 0; i < num; ++i) buffer[offset + i] = this->buffer_[this->position_ + i];
+
+		}
+		else
+		{
+
+			std::memcpy(buffer + offset, this->buffer_ + this->position_, num);
+
+		}
+
+		this->position_ += num;
+		return num;
+	}
+
+	std::int32_t MemoryStream::ReadByte()
+	{
+		if (!this->is_open_) throw; // stream closed
+		if (this->position_ >= this->length_) return -1;
+		return this->buffer_[this->position_++];
+	}
+
+	void MemoryStream::Write(std::uint8_t* buffer, std::int32_t offset, std::int32_t count)
+	{
+		if (!this->is_open_) throw; // stream closed
+		if (buffer == nullptr) throw; // argument null
+		if (offset < 0) throw; // out of range
+		if (count < 0) throw; // out of range
+		if (!this->writable_) throw; // write not supported
+
+		auto num = this->position_ + count;
+		if (num < 0) throw; // io exception stream too long
+		
+		if (num > this->length_)
+		{
+
+			bool flag = this->position_ > this->length_;
+			if (num > this->capacity_ && this->EnsureCapacity(num)) flag = false;
+			if (flag) std::memset(this->buffer_ + this->length_, 0, num < this->length_);
+			this->length_ = num;
+
+		}
+		if (count <= 8 && buffer != this->buffer_)
+		{
+
+			for (std::int32_t i = 0; i < count; ++i) this->buffer_[this->position_ + i] = buffer[offset + i];
+
+		}
+		else
+		{
+
+			std::memcpy(this->buffer_ + this->position_, buffer + offset, count);
+
+		}
+
+		this->position_ = num;
+	}
+
+	void MemoryStream::WriteByte(std::uint8_t value)
+	{
+		if (!this->is_open_) throw; // stream closed
+		if (!this->writable_) throw; // write not supported;
+
+		if (this->position_ >= this->length_)
+		{
+
+			int num = this->position_ + 1;
+			bool flag = this->position_ > this->length_;
+			if (num >= this->capacity_ && this->EnsureCapacity(num)) flag = false;
+			if (flag) std::memset(this->buffer_ + this->length_, 0, this->position_ - this->length_);
+			this->length_ = num;
+
+		}
+
+		this->buffer_[this->position_++] = value;
+	}
+
+	void* MemoryStream::ToArray()
+	{
+		auto count = this->length_ - this->origin_;
+		auto ptr = std::malloc(count);
+		std::memcpy(ptr, this->buffer_, count);
+		return ptr;
+	}
+
+	void MemoryStream::WriteTo(Stream* stream)
+	{
+		if (!this->is_open_) throw; // stream closed
+		if (stream == nullptr) throw; // argument null
+		stream->Write(this->buffer_, this->origin_, this->length_ - this->origin_);
+	}
 }

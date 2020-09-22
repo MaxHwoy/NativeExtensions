@@ -2,7 +2,7 @@
 #include "Path.h"
 #include <filesystem>
 
-
+#pragma warning (disable : 4566)
 
 namespace NativeExtensions
 {
@@ -224,7 +224,7 @@ namespace NativeExtensions
 		'\u001f'
 	};
 
-	void Path::CheckInvalidPathChars(const std::string& path, bool checkAdditional = false)
+	void Path::CheckInvalidPathChars(const std::string& path, bool checkAdditional)
 	{
 		
 	}

@@ -51,5 +51,7 @@ namespace NativeExtensions
 		std::int32_t ReadByte() override;
 		void Write(std::uint8_t* buffer, std::int32_t offset, std::int32_t count) override;
 		void WriteByte(std::uint8_t value) override;
+		virtual void* ToArray();
+		virtual void WriteTo(Stream* stream);
 	};
 }
