@@ -9,8 +9,15 @@
 
 // add headers that you want to pre-compile here
 #include "framework.h"
+#include <Windows.h>
 #include <iostream>
+#include <fileapi.h>
+//#include <errhandlingapi.h>
+#include <filesystem>
 #include <string>
+#include <thread>
+#include <array>
+#include <unordered_map>
 
 
 #include "Types.h"

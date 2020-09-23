@@ -42,5 +42,8 @@ namespace NativeExtensions
 
 	public:
 		static void CheckInvalidPathChars(const std::string& path, bool checkAdditional = false);
+
+		static std::string GetFileName(std::string path);
+		static std::wstring GetFileName(std::wstring path);
 	};
 }

@@ -153,14 +153,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BitConverter.h" />
+    <ClInclude Include="Error.h" />
+    <ClInclude Include="FileStream.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="MemoryStream.h" />
     <ClInclude Include="Path.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="SafeArray.h" />
     <ClInclude Include="Stream.h" />
     <ClInclude Include="Types.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BitConverter.cpp" />
+    <ClCompile Include="Error.cpp" />
+    <ClCompile Include="FileStream.cpp" />
     <ClCompile Include="MemoryStream.cpp" />
     <ClCompile Include="NativeExtensions.cpp" />
     <ClCompile Include="Path.cpp" />
@@ -170,6 +177,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="SafeArray.cpp" />
     <ClCompile Include="Stream.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
