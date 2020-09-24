@@ -21,7 +21,16 @@ namespace NativeExtensions
 	public:
 		void Dispose();
 		std::int32_t Length();
-		void SetMemory()
+		T* GetPointer();
 
+		void Copy(SafeArray& src, SafeArray& dest, std::int32_t count);
+		void Copy(SafeArray& src, std::int32_t srcStart, SafeArray& dest, std::int32_t destStart, std::int32_t count);
+		void ForEach(Method<void __cdecl(T)> method);
+		T FindValue(Method<bool __cdecl(T)> method);
+		const T& FindReference(Method<bool __cdecl(T)> method);
+		std::int32_t FindIndex(Method<bool __cdecl(T)> method);
+		bool Exists(Method<bool __cdecl(T)> method);
+
+		void Resize(std::int32_t size);
 	};
 }

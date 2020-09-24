@@ -6,6 +6,8 @@ constexpr auto WStringEmpty = L"";
 
 namespace NativeExtensions
 {
+	template <typename T> using Method = T*;
+
 	/// <summary>Specifies the position in a stream to use for seeking.</summary>
 	enum class SeekOrigin
 	{
