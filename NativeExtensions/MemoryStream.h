@@ -2,9 +2,9 @@
 
 
 
-namespace NativeExtensions
+namespace NativeExtensions::IO
 {
-	class MemoryStream : Stream
+	class MemoryStream : public Stream
 	{
 	private:
 		std::uint8_t* buffer_;

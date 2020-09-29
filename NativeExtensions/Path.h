@@ -2,7 +2,7 @@
 
 
 
-namespace NativeExtensions
+namespace NativeExtensions::IO
 {
 	class Path
 	{

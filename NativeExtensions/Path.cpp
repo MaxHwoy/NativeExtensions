@@ -4,7 +4,7 @@
 
 #pragma warning (disable : 4566)
 
-namespace NativeExtensions
+namespace NativeExtensions::IO
 {
 	const std::int8_t Path::trim_end_chars_[8] = {
 		'\t',

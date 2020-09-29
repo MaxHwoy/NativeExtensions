@@ -3,7 +3,7 @@
 
 
 
-namespace NativeExtensions
+namespace NativeExtensions::IO
 {
 	void Stream::CopyTo(Stream* destination)
 	{

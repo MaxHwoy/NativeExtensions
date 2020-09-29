@@ -17,9 +17,12 @@
 #include <string>
 #include <thread>
 #include <array>
+#include <exception>
 #include <unordered_map>
 
 
 #include "Types.h"
+#include "Exception.h"
+#include "Interface.h"
 
 #endif //PCH_H

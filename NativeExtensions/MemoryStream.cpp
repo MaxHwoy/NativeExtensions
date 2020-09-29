@@ -6,7 +6,7 @@
 #pragma warning (disable : 26451)
 
 
-namespace NativeExtensions
+namespace NativeExtensions::IO
 {
 	const std::int32_t MemoryStream::memory_stream_max_length_ = INT32_MAX;
 

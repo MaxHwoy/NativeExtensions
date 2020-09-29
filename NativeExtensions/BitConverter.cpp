@@ -1,77 +1,77 @@
 #include "pch.h"
-#include "SafeArray.h"
+#include "Array.h"
 #include "BitConverter.h"
 
 
 
 namespace NativeExtensions
 {
-	SafeArray<std::uint8_t> BitConverter::GetBytes(bool value)
+	Array<std::uint8_t> BitConverter::GetBytes(bool value)
 	{
-		auto result = SafeArray<std::uint8_t>(1);
+		auto result = Array<std::uint8_t>(1);
 		result[0] = (std::uint8_t)value;
 		return result;
 	}
 
-	SafeArray<std::uint8_t> BitConverter::GetBytes(wchar_t value)
+	Array<std::uint8_t> BitConverter::GetBytes(wchar_t value)
 	{
-		auto result = SafeArray<std::uint8_t>(2);
+		auto result = Array<std::uint8_t>(2);
 		*(wchar_t*)&result[0] = value;
 		return result;
 	}
 
-	SafeArray<std::uint8_t> BitConverter::GetBytes(std::int16_t value)
+	Array<std::uint8_t> BitConverter::GetBytes(std::int16_t value)
 	{
-		auto result = SafeArray<std::uint8_t>(2);
+		auto result = Array<std::uint8_t>(2);
 		*(std::int16_t*)&result[0] = value;
 		return result;
 	}
 
-	SafeArray<std::uint8_t> BitConverter::GetBytes(std::uint16_t value)
+	Array<std::uint8_t> BitConverter::GetBytes(std::uint16_t value)
 	{
-		auto result = SafeArray<std::uint8_t>(2);
+		auto result = Array<std::uint8_t>(2);
 		*(std::uint16_t*)&result[0] = value;
 		return result;
 	}
 
-	SafeArray<std::uint8_t> BitConverter::GetBytes(std::int32_t value)
+	Array<std::uint8_t> BitConverter::GetBytes(std::int32_t value)
 	{
-		auto result = SafeArray<std::uint8_t>(4);
+		auto result = Array<std::uint8_t>(4);
 		*(std::int32_t*)&result[0] = value;
 		return result;
 	}
 
-	SafeArray<std::uint8_t> BitConverter::GetBytes(std::uint32_t value)
+	Array<std::uint8_t> BitConverter::GetBytes(std::uint32_t value)
 	{
-		auto result = SafeArray<std::uint8_t>(4);
+		auto result = Array<std::uint8_t>(4);
 		*(std::uint32_t*)&result[0] = value;
 		return result;
 	}
 
-	SafeArray<std::uint8_t> BitConverter::GetBytes(std::int64_t value)
+	Array<std::uint8_t> BitConverter::GetBytes(std::int64_t value)
 	{
-		auto result = SafeArray<std::uint8_t>(8);
+		auto result = Array<std::uint8_t>(8);
 		*(std::int64_t*)&result[0] = value;
 		return result;
 	}
 
-	SafeArray<std::uint8_t> BitConverter::GetBytes(std::uint64_t value)
+	Array<std::uint8_t> BitConverter::GetBytes(std::uint64_t value)
 	{
-		auto result = SafeArray<std::uint8_t>(8);
+		auto result = Array<std::uint8_t>(8);
 		*(std::uint64_t*)&result[0] = value;
 		return result;
 	}
 
-	SafeArray<std::uint8_t> BitConverter::GetBytes(float value)
+	Array<std::uint8_t> BitConverter::GetBytes(float value)
 	{
-		auto result = SafeArray<std::uint8_t>(4);
+		auto result = Array<std::uint8_t>(4);
 		*(float*)&result[0] = value;
 		return result;
 	}
 
-	SafeArray<std::uint8_t> BitConverter::GetBytes(double value)
+	Array<std::uint8_t> BitConverter::GetBytes(double value)
 	{
-		auto result = SafeArray<std::uint8_t>(8);
+		auto result = Array<std::uint8_t>(8);
 		*(double*)&result[0] = value;
 		return result;
 	}
@@ -133,7 +133,7 @@ namespace NativeExtensions
 
 	std::string BitConverter::ToString(void* arr, std::int32_t startIndex, std::int32_t length)
 	{
-		auto ptr = SafeArray<std::uint8_t>(length + 1);
+		auto ptr = Array<std::uint8_t>(length + 1);
 		auto at = (std::uint8_t*)arr + startIndex;
 
 		for (std::int32_t i = 0; i < length; ++i) ptr[i] = at[i];
@@ -143,7 +143,7 @@ namespace NativeExtensions
 
 	float BitConverter::Int32BitsToSingle(std::int32_t value)
 	{
-		return *(float)&value;
+		return *(float*)&value;
 	}
 
 	float BitConverter::UInt32BitsToSingle(std::uint32_t value)

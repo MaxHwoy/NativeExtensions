@@ -2,7 +2,7 @@
 
 
 
-namespace NativeExtensions
+namespace NativeExtensions::IO
 {
 	struct SecurityAttributes
 	{
@@ -16,7 +16,7 @@ namespace NativeExtensions
 
 	};
 
-	class FileStream : Stream
+	class FileStream : public Stream
 	{
 	private:
 		const static const wchar_t* unknown_filename_;
@@ -37,15 +37,15 @@ namespace NativeExtensions
 		std::int64_t pos_;
 		std::int64_t append_start_;
 
-		const static std::int32_t FILE_FLAG_OVERLAPPED;
-		const static std::int32_t FILE_BEGIN;
-		const static std::int32_t FILE_CURRENT;
-		const static std::int32_t FILE_END;
-		const static std::int32_t ERROR_BROKEN_PIPE;
-		const static std::int32_t ERROR_NO_DATA;
-		const static std::int32_t ERROR_HANDLE_EOF;
-		const static std::int32_t ERROR_INVALID_PARAMETER;
-		const static std::int32_t ERROR_IO_PENDING;
+		//const static std::int32_t FILE_FLAG_OVERLAPPED;
+		//const static std::int32_t FILE_BEGIN;
+		//const static std::int32_t FILE_CURRENT;
+		//const static std::int32_t FILE_END;
+		//const static std::int32_t ERROR_BROKEN_PIPE;
+		//const static std::int32_t ERROR_NO_DATA;
+		//const static std::int32_t ERROR_HANDLE_EOF;
+		//const static std::int32_t ERROR_INVALID_PARAMETER;
+		//const static std::int32_t ERROR_IO_PENDING;
 
 	private:
 		FileStream();

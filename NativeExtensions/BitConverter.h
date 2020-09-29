@@ -7,16 +7,16 @@ namespace NativeExtensions
 	class BitConverter final
 	{
 	public:
-		static SafeArray<std::uint8_t> GetBytes(bool value);
-		static SafeArray<std::uint8_t> GetBytes(wchar_t value);
-		static SafeArray<std::uint8_t> GetBytes(std::int16_t value);
-		static SafeArray<std::uint8_t> GetBytes(std::uint16_t value);
-		static SafeArray<std::uint8_t> GetBytes(std::int32_t value);
-		static SafeArray<std::uint8_t> GetBytes(std::uint32_t value);
-		static SafeArray<std::uint8_t> GetBytes(std::int64_t value);
-		static SafeArray<std::uint8_t> GetBytes(std::uint64_t value);
-		static SafeArray<std::uint8_t> GetBytes(float value);
-		static SafeArray<std::uint8_t> GetBytes(double value);
+		static Array<std::uint8_t> GetBytes(bool value);
+		static Array<std::uint8_t> GetBytes(wchar_t value);
+		static Array<std::uint8_t> GetBytes(std::int16_t value);
+		static Array<std::uint8_t> GetBytes(std::uint16_t value);
+		static Array<std::uint8_t> GetBytes(std::int32_t value);
+		static Array<std::uint8_t> GetBytes(std::uint32_t value);
+		static Array<std::uint8_t> GetBytes(std::int64_t value);
+		static Array<std::uint8_t> GetBytes(std::uint64_t value);
+		static Array<std::uint8_t> GetBytes(float value);
+		static Array<std::uint8_t> GetBytes(double value);
 
 		static bool ToBoolean(void* arr, std::int32_t startIndex);
 		static wchar_t ToWChar(void* arr, std::int32_t startIndex);
@@ -31,31 +31,31 @@ namespace NativeExtensions
 		static std::string ToString(void* arr, std::int32_t startIndex);
 		static std::string ToString(void* arr, std::int32_t startIndex, std::int32_t length);
 		
-		static bool ToBoolean(const SafeArray<std::int8_t>& arr, std::int32_t startIndex);
-		static wchar_t ToWChar(const SafeArray<std::int8_t>& arr, std::int32_t startIndex);
-		static std::int16_t ToInt16(const SafeArray<std::int8_t>& arr, std::int32_t startIndex);
-		static std::uint16_t ToUInt16(const SafeArray<std::int8_t>& arr, std::int32_t startIndex);
-		static std::int32_t ToInt32(const SafeArray<std::int8_t>& arr, std::int32_t startIndex);
-		static std::uint32_t ToUInt32(const SafeArray<std::int8_t>& arr, std::int32_t startIndex);
-		static std::int64_t ToInt64(const SafeArray<std::int8_t>& arr, std::int32_t startIndex);
-		static std::uint64_t ToUInt64(const SafeArray<std::int8_t>& arr, std::int32_t startIndex);
-		static float ToSingle(const SafeArray<std::int8_t>& arr, std::int32_t startIndex);
-		static double ToDouble(const SafeArray<std::int8_t>& arr, std::int32_t startIndex);
-		static std::string ToString(const SafeArray<std::int8_t>& arr, std::int32_t startIndex);
-		static std::string ToString(const SafeArray<std::int8_t>& arr, std::int32_t startIndex, std::int32_t length);
+		static bool ToBoolean(const Array<std::int8_t>& arr, std::int32_t startIndex);
+		static wchar_t ToWChar(const Array<std::int8_t>& arr, std::int32_t startIndex);
+		static std::int16_t ToInt16(const Array<std::int8_t>& arr, std::int32_t startIndex);
+		static std::uint16_t ToUInt16(const Array<std::int8_t>& arr, std::int32_t startIndex);
+		static std::int32_t ToInt32(const Array<std::int8_t>& arr, std::int32_t startIndex);
+		static std::uint32_t ToUInt32(const Array<std::int8_t>& arr, std::int32_t startIndex);
+		static std::int64_t ToInt64(const Array<std::int8_t>& arr, std::int32_t startIndex);
+		static std::uint64_t ToUInt64(const Array<std::int8_t>& arr, std::int32_t startIndex);
+		static float ToSingle(const Array<std::int8_t>& arr, std::int32_t startIndex);
+		static double ToDouble(const Array<std::int8_t>& arr, std::int32_t startIndex);
+		static std::string ToString(const Array<std::int8_t>& arr, std::int32_t startIndex);
+		static std::string ToString(const Array<std::int8_t>& arr, std::int32_t startIndex, std::int32_t length);
 
-		static bool ToBoolean(const SafeArray<std::uint8_t>& arr, std::int32_t startIndex);
-		static wchar_t ToWChar(const SafeArray<std::uint8_t>& arr, std::int32_t startIndex);
-		static std::int16_t ToInt16(const SafeArray<std::uint8_t>& arr, std::int32_t startIndex);
-		static std::uint16_t ToUInt16(const SafeArray<std::uint8_t>& arr, std::int32_t startIndex);
-		static std::int32_t ToInt32(const SafeArray<std::uint8_t>& arr, std::int32_t startIndex);
-		static std::uint32_t ToUInt32(const SafeArray<std::uint8_t>& arr, std::int32_t startIndex);
-		static std::int64_t ToInt64(const SafeArray<std::uint8_t>& arr, std::int32_t startIndex);
-		static std::uint64_t ToUInt64(const SafeArray<std::uint8_t>& arr, std::int32_t startIndex);
-		static float ToSingle(const SafeArray<std::uint8_t>& arr, std::int32_t startIndex);
-		static double ToDouble(const SafeArray<std::uint8_t>& arr, std::int32_t startIndex);
-		static std::string ToString(const SafeArray<std::uint8_t>& arr, std::int32_t startIndex);
-		static std::string ToString(const SafeArray<std::uint8_t>& arr, std::int32_t startIndex, std::int32_t length);
+		static bool ToBoolean(const Array<std::uint8_t>& arr, std::int32_t startIndex);
+		static wchar_t ToWChar(const Array<std::uint8_t>& arr, std::int32_t startIndex);
+		static std::int16_t ToInt16(const Array<std::uint8_t>& arr, std::int32_t startIndex);
+		static std::uint16_t ToUInt16(const Array<std::uint8_t>& arr, std::int32_t startIndex);
+		static std::int32_t ToInt32(const Array<std::uint8_t>& arr, std::int32_t startIndex);
+		static std::uint32_t ToUInt32(const Array<std::uint8_t>& arr, std::int32_t startIndex);
+		static std::int64_t ToInt64(const Array<std::uint8_t>& arr, std::int32_t startIndex);
+		static std::uint64_t ToUInt64(const Array<std::uint8_t>& arr, std::int32_t startIndex);
+		static float ToSingle(const Array<std::uint8_t>& arr, std::int32_t startIndex);
+		static double ToDouble(const Array<std::uint8_t>& arr, std::int32_t startIndex);
+		static std::string ToString(const Array<std::uint8_t>& arr, std::int32_t startIndex);
+		static std::string ToString(const Array<std::uint8_t>& arr, std::int32_t startIndex, std::int32_t length);
 
 		static float Int32BitsToSingle(std::int32_t value);
 		static float UInt32BitsToSingle(std::uint32_t value);

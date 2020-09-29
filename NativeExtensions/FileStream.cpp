@@ -7,19 +7,19 @@
 
 
 
-namespace NativeExtensions
+namespace NativeExtensions::IO
 {
 	const const wchar_t* FileStream::unknown_filename_ = L"<UnknownFilename>";
 	const std::int32_t FileStream::default_buffer_size_ = 0x1000;
-	const std::int32_t FileStream::FILE_FLAG_OVERLAPPED = 0x40000000;
-	const std::int32_t FileStream::FILE_BEGIN = 0x00;
-	const std::int32_t FileStream::FILE_CURRENT = 0x01;
-	const std::int32_t FileStream::FILE_END = 0x02;
-	const std::int32_t FileStream::ERROR_BROKEN_PIPE = 0x6D;
-	const std::int32_t FileStream::ERROR_NO_DATA = 0xE8;
-	const std::int32_t FileStream::ERROR_HANDLE_EOF = 0x26;
-	const std::int32_t FileStream::ERROR_INVALID_PARAMETER = 0x57;
-	const std::int32_t FileStream::ERROR_IO_PENDING = 0x03E5;
+	//const std::int32_t FileStream::FILE_FLAG_OVERLAPPED = 0x40000000;
+	//const std::int32_t FileStream::FILE_BEGIN = 0x00;
+	//const std::int32_t FileStream::FILE_CURRENT = 0x01;
+	//const std::int32_t FileStream::FILE_END = 0x02;
+	//const std::int32_t FileStream::ERROR_BROKEN_PIPE = 0x6D;
+	//const std::int32_t FileStream::ERROR_NO_DATA = 0xE8;
+	//const std::int32_t FileStream::ERROR_HANDLE_EOF = 0x26;
+	//const std::int32_t FileStream::ERROR_INVALID_PARAMETER = 0x57;
+	//const std::int32_t FileStream::ERROR_IO_PENDING = 0x03E5;
 
 	FileStream::FileStream()
 	{
