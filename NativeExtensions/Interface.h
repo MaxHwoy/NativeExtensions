@@ -293,15 +293,6 @@ namespace NativeExtensions
 				/// <returns>
 				///   <see langword="true" /> if <paramref name="item" /> is found in the NativeExtensions::Collections::Generic::ICollection'T'; otherwise, <see langword="false" />.</returns>
 				virtual bool Contains(T* item) = 0;
-				/// <summary>Copies the elements of the NativeExtensions::Collections::Generic::ICollection'T' to an <see cref="T:System.Array" />, starting at a particular Array index.</summary>
-				/// <param name="array">The Array that is the destination of the elements copied from NativeExtensions::Collections::Generic::ICollection'T'.</param>
-				/// <param name="arrayIndex">The zero-based index in <paramref name="array" /> at which copying begins.</param>
-				/// <exception cref="T:NativeExtensions::ArgumentNullException">
-				///   <paramref name="array" /> is <see langword="null" />.</exception>
-				/// <exception cref="T:NativeExtensions::ArgumentOutOfRangeException">
-				///   <paramref name="arrayIndex" /> is less than 0.</exception>
-				/// <exception cref="T:NativeExtensions::ArgumentException">The number of elements in the source NativeExtensions::Collections::Generic::ICollection'T' is greater than the available space from <paramref name="arrayIndex" /> to the end of the destination <paramref name="array" />.</exception>
-				virtual void CopyTo(Array<T>, std::int32_t arrayIndex) = 0;
 				/// <summary>Removes the first occurrence of a specific object from the NativeExtensions::Collections::Generic::ICollection'T'.</summary>
 				/// <param name="item">The object to remove from the NativeExtensions::Collections::Generic::ICollection'T'.</param>
 				/// <returns>

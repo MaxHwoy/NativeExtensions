@@ -55,7 +55,7 @@ namespace NativeExtensions
 
 	template <typename T> std::int32_t Array<T>::Add(void* value)
 	{
-		throw; // not supported exception
+		throw NotSupportedException("Adding elements to a fixed size array is not supported");
 	}
 
 	template <typename T> void Array<T>::Clear()
@@ -217,18 +217,171 @@ namespace NativeExtensions
 		return this->ptr_;
 	}
 
+	template <typename T> void* Array<T>::GetObj(std::int32_t index)
+	{
+		return (void*)this->GetValue(index);
+	}
 
+	template <typename T> T* Array<T>::GetValue(std::int32_t index)
+	{
+		if (index < 0) throw ArgumentOutOfRangeException("Index passed is less than 0");
+		if (index >= this->length_) throw ArgumentOutOfRangeException("Index passed overflows length of the array");
+		return this->ptr_ + index;
+	}
 
+	template <typename T> std::int32_t Array<T>::IndexOf(T* value)
+	{
+		if (value == nullptr) throw ArgumentNullPtrException("Pointer to the value passed is a null pointer");
+
+		for (std::int32_t i = 0; i < this->length_; ++i)
+		{
+
+			if (*(this->ptr_ + i) == *value) return i;
+
+		}
+
+		return -1;
+	}
+
+	template <typename T> std::int32_t Array<T>::IndexOf(T* value, std::int32_t startIndex)
+	{
+		if (value == nullptr) throw ArgumentNullPtrException("Pointer to the value passed is a null pointer");
+		if (startIndex < 0) throw ArgumentOutOfRangeException("Starting index passed is less than 0");
+		if (startIndex >= this->length_) throw ArgumentOutOfRangeException("Starting index overflows length of the array");
+
+		while (startIndex < this->length_)
+		{
+
+			if (*(this->ptr_ + startIndex) == *value) return startIndex;
+			++startIndex;
+
+		}
+		
+		return -1;
+	}
+
+	template <typename T> std::int32_t Array<T>::IndexOf(T* value, std::int32_t startIndex, std::int32_t count)
+	{
+		if (value == nullptr) throw ArgumentNullPtrException("Pointer to the value passed is a null pointer");
+		if (startIndex < 0) throw ArgumentOutOfRangeException("Starting index passed is less than 0");
+		if (startIndex >= this->length_) throw ArgumentOutOfRangeException("Starting index overflows length of the array");
+		
+		auto max = startIndex + count;
+
+		if (max >= this->length_) throw ArgumentException("Number of elements to search in overflows length of the array");
+
+		while (startIndex < max)
+		{
+
+			if (*(this->ptr_ + startIndex) == *value) return startIndex;
+			++startIndex;
+
+		}
+
+		return -1;
+	}
+
+	template <typename T> std::int32_t Array<T>::IndexOf(void* value)
+	{
+		if (value == nullptr) throw ArgumentNullPtrException("Pointer to the value passed is a null pointer");
+		auto ptr = *reinterpret_cast<T*>(value);
+
+		for (std::int32_t i = 0; i < this->length_; ++i)
+		{
+
+			if (*(this->ptr_ + i) == ptr) return i;
+
+		}
+
+		return -1;
+	}
+
+	template <typename T> void Array<T>::Insert(std::int32_t index, void* value)
+	{
+		throw NotSupportedException("Inserting elements into a fixed size array is not supported");
+	}
+
+	template <typename T> bool Array<T>::IsFixedSize()
+	{
+		return true;
+	}
+
+	template <typename T> bool Array<T>::IsReadOnly()
+	{
+		return false;
+	}
+
+	template <typename T> bool Array<T>::IsSynchronized()
+	{
+		return false;
+	}
+
+	template <typename T> std::int32_t Array<T>::LastIndexOf(T* value)
+	{
+		if (value == nullptr) throw ArgumentNullPtrException("Pointer to the value passed is a null pointer");
+
+		for (std::int32_t i = this->length_ - 1; i >= 0; --i)
+		{
+
+			if (*(this->ptr_ + i) == *value) return i;
+
+		}
+
+		return -1;
+	}
+
+	template <typename T> std::int32_t Array<T>::LastIndexOf(T* value, std::int32_t startIndex)
+	{
+		if (value == nullptr) throw ArgumentNullPtrException("Pointer to the value passed is a null pointer");
+		if (startIndex < 0) throw ArgumentOutOfRangeException("Starting index passed is less than 0");
+		if (startIndex >= this->length_) throw ArgumentOutOfRangeException("Starting index overflows length of the array");
+	
+		while (startIndex >= 0)
+		{
+
+			if (*(this->ptr_ + startIndex) == *value) return startIndex;
+			--startIndex;
+
+		}
+
+		return -1;
+	}
+
+	template <typename T> std::int32_t Array<T>::LastIndexOf(T* value, std::int32_t startIndex, std::int32_t count)
+	{
+		if (value == nullptr) throw ArgumentNullPtrException("Pointer to the value passed is a null pointer");
+		if (startIndex < 0) throw ArgumentOutOfRangeException("Starting index passed is less than 0");
+		if (startIndex >= this->length_) throw ArgumentOutOfRangeException("Starting index overflows length of the array");
+
+		auto max = startIndex - count;
+
+		if (max < 0) throw ArgumentException("Number of elements to search in underflows starting element");
+
+		while (startIndex > max)
+		{
+
+			if (*(this->ptr_ + startIndex) == *value) return startIndex;
+			--startIndex;
+
+		}
+
+		return -1;
+	}
 
 	template <typename T> std::int32_t Array<T>::Length()
 	{
 		return this->length_;
 	}
 
-
+	template <typename T> void Array<T>::Remove(void* value)
+	{
+		throw NotSupportedException("Removing elements from a fixed size array is not supported");
+	}
 	
-
-	
+	template <typename T> void Array<T>::RemoveAt(std::int32_t index)
+	{
+		throw NotSupportedException("Removing elements from a fixed size array is not supported");
+	}
 	
 	template <typename T> void Array<T>::Resize(std::int32_t size)
 	{
@@ -245,15 +398,24 @@ namespace NativeExtensions
 		this->length_ = size;
 	}
 
+	template <typename T> void Array<T>::Reverse()
+	{
 
 
+
+	}
+
+	template <typename T> void Array<T>::Reverse(std::int32_t startIndex, std::int32_t count)
+	{
+
+	}
 
 
 
 	template <typename T> Array<T>::Enumerator::Enumerator(Array<T>* arr)
 	{
 		this->array_ = arr;
-		this->index_ = index;
+		this->index_ = 0;
 		this->current_ = nullptr;
 	}
 

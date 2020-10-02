@@ -14,9 +14,9 @@ namespace NativeExtensions
 		class Enumerator final : public Collections::Generic::IEnumerator<T>
 		{
 		private:
-			private Array<T>* array_;
-			private std::int32_t index_;
-			private T* current_;
+			Array<T>* array_;
+			std::int32_t index_;
+			T* current_;
 
 		public:
 			/// <summary>Initializes new instance of Enumerator for NativeExtensions::Array.</summary>
@@ -124,6 +124,8 @@ namespace NativeExtensions
 		/// -or-  
 		/// <paramref name="count" /> is greater than the number of elements from <paramref name="destStart" /> to the end of <paramref name="dest" />.</exception>
 		static void Copy(Array* src, std::int32_t srcStart, Array* dest, std::int32_t destStart, std::int32_t count);
+		/// <summary>Gets the total number of elements in the NativeExtensions::Array.</summary>
+		/// <returns>The total number of elements in all the NativeExtensions::Array; zero if there are no elements in the array.</returns>
 		std::int32_t Count() override;
 		/// <summary>Determines whether an object is structurally equal to the current instance.</summary>
 		/// <param name="other">The object to compare with the current instance.</param>
@@ -153,30 +155,49 @@ namespace NativeExtensions
 		std::int32_t GetHashCode(Collections::IEqualityComparer* comparer) override;
 		Collections::IEnumerator GetEnumerator() override;
 		T* GetPointer();
-		T* GetValue(std::int32_t index);
 		void* GetObj(std::int32_t index) override;
+		T* GetValue(std::int32_t index);
 		std::int32_t IndexOf(T* value);
 		std::int32_t IndexOf(T* value, std::int32_t startIndex);
 		std::int32_t IndexOf(T* value, std::int32_t startIndex, std::int32_t count);
 		std::int32_t IndexOf(void* value) override;
 		void Insert(std::int32_t index, void* value) override;
+		/// <summary>Gets a value indicating whether the NativeExtensions::Array has a fixed size.</summary>
+		/// <returns>This property is always <see langword="true" /> for all arrays.</returns>
 		bool IsFixedSize() override;
+		/// <summary>Gets a value indicating whether the NativeExtensions::Array is read-only.</summary>
+		/// <returns>This property is always <see langword="false" /> for all arrays.</returns>
 		bool IsReadOnly() override;
+		/// <summary>Gets a value indicating whether access to the NativeExtensions::Array is synchronized (thread safe).</summary>
+		/// <returns>This property is always <see langword="false" /> for all arrays.</returns>
 		bool IsSynchronized() override;
 		std::int32_t LastIndexOf(T* value);
 		std::int32_t LastIndexOf(T* value, std::int32_t startIndex);
 		std::int32_t LastIndexOf(T* value, std::int32_t startIndex, std::int32_t count);
+		/// <summary>Gets the total number of elements in the NativeExtensions::Array.</summary>
+		/// <returns>The total number of elements in all the NativeExtensions::Array; zero if there are no elements in the array.</returns>
 		std::int32_t Length();
 		void Remove(void* value) override;
 		void RemoveAt(std::int32_t index) override;
 		void Resize(std::int32_t size);
 		void Reverse();
 		void Reverse(std::int32_t startIndex, std::int32_t count);
-		void SetValue(T* value, std::int32_t index);
 		void SetObj(void* value, std::int32_t index) override;
-		void Sort(Method<std::int32_t __cdecl(T, T)> comparisonMethod);
+		void SetValue(T* value, std::int32_t index);
 		void Sort(Method<std::int32_t __cdecl(T, T)> comparisonMethod);
 		void* SyncRoot() override;
 		bool TrueForAll(Method<bool __cdecl(T)> method);
 	};
+
+	using bools = Array<bool>;
+	using chars = Array<char>;
+	using wchars = Array<wchar_t>;
+	using int8s = Array<std::int8_t>;
+	using uint8s = Array<std::uint8_t>;
+	using int16s = Array<std::int16_t>;
+	using uint16s = Array<std::uint16_t>;
+	using int32s = Array<std::int32_t>;
+	using uint32s = Array<std::uint32_t>;
+	using int64s = Array<std::int64_t>;
+	using uint64s = Array<std::uint64_t>;
 }
